@@ -2,7 +2,7 @@
 
 ## TODO 
 
--Finish: CPlayer class. Countiune with Program Specification
+- Finish: CPlayer class. Countiune with Program Specification
 
 Done: finish seting up the CSquare class and array.
 
