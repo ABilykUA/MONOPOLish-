@@ -147,10 +147,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CSquare.cpp" />
     <ClCompile Include="MONOPOLish.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CSquare.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

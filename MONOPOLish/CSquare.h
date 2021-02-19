@@ -17,9 +17,10 @@ public:
 
 	CSquare(char id , string name);
 
-	//getters 
+	//getters and setters 
 
-
+	char GetID() { return mCode; }
+	string GetName() { return mName; }
 
 
 private:

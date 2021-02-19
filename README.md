@@ -1,7 +1,10 @@
 # MONOPOLish
 
 ## TODO 
-- finish seting up the CSquare class and array.
+
+-Finish: CPlayer class. Countiune with Program Specification
+
+Done: finish seting up the CSquare class and array.
 
 ### Notes 
 
