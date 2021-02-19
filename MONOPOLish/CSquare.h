@@ -6,17 +6,17 @@
 
 using namespace std;
 
-// TODO --- finish seting up the CSquare class and array.
-
 class CSquare
 {
-
-
-
 public:
 
+
+	//constructor
 	CSquare(char id , string name);
 
+	//functions 
+
+	
 	//getters and setters 
 
 	char GetID() { return mCode; }
@@ -25,8 +25,8 @@ public:
 
 private:
 
-	char mCode;
 
+	char mCode;
 	string mName;
 
 
