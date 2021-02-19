@@ -1,6 +1,6 @@
 # MONOPOLish
 
-##TODO 
+## TODO 
 - finish seting up the CSquare class and array.
 
 ### Notes 
