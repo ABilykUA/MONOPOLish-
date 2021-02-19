@@ -147,7 +147,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CSquare.cpp" />
     <ClCompile Include="MONOPOLish.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CSquare.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

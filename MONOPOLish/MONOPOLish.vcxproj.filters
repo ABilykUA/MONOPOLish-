@@ -18,5 +18,13 @@
     <ClCompile Include="MONOPOLish.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CSquare.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CSquare.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
