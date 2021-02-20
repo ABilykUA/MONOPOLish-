@@ -20,4 +20,4 @@ Work started
 
 - 20/2/21  
 Complited 40% max  
-Complited 40% +
+Complited Pass Mark 
