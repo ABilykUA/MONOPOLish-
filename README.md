@@ -1,17 +1,17 @@
 # MONOPOLish
 
-## TODO 
+## TODO: 
 
  Start on lvl 2 req :)   
 
 ### Done: 
 
-- finish seting up the CSquare class and array.
-- CPlayer class, Countiune with Program Specification.
+- Finish: seting up the CSquare class and array.
+- Finish: CPlayer class, Countiune with Program Specification.
 - Fix: position it gose more than 26 and chrashes the app
 
 
-### Notes 
+### Notes: 
 
 - 19/2/21 
 Git rep set up 
