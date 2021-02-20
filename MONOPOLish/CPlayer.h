@@ -23,7 +23,6 @@ public:
 
 	void PassGo();
 
-	//fix this shit 
 	void CheckIfGoIsPassed();
 
 
