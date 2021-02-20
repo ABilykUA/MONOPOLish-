@@ -7,6 +7,7 @@
 #include "CPlayer.h"
 
 #include <random>
+#include <time.h>
 
 using namespace std;
 
@@ -16,7 +17,34 @@ int Random()
     return static_cast<int>(static_cast<double> (rand()) / (RAND_MAX + 1) * 6.0f + 1);
 }
 
+
+void WinCondition(int i, CPlayer& Dog, CPlayer& Car) {
+
+    if (i == 20)
+    {
+        cout << Dog.GetName() << " has " << Dog.GetMoney() << endl;
+        cout << Car.GetName() << " has " << Car.GetMoney() << endl;
+
+        if (Dog.GetMoney() > Car.GetMoney())
+        {
+            cout << Dog.GetName() << " won !" << endl;
+
+        }
+        else if (Dog.GetMoney() == Car.GetMoney())
+        {
+            cout << "It's A draw !" << endl;
+        }
+        else
+        {
+            cout << Car.GetName() << " won !" << endl;
+        }
+
+    }
+}
+
 void Turn(CPlayer& player, CSquare board[]) {
+
+
   
     int rand = Random();
     
@@ -24,10 +52,10 @@ void Turn(CPlayer& player, CSquare board[]) {
 
     player.AddPosition(rand);
 
-    cout << player.GetName() << " lands " << board[player.GetPosition()].GetName() << endl;
-
     player.CheckIfGoIsPassed();
 
+    cout << player.GetName() << " lands " << board[player.GetPosition()].GetName() << endl;
+    
     cout << " " << endl;
 
 }
@@ -67,12 +95,15 @@ int main()
     cout << "----------------------" << endl;
 
     //sets the seed 4 Random() function
-    srand(4);
+    srand(static_cast<unsigned int> (time(0)));
 
     //simulates 20 turns
     for (int i = 0; i <= 20; i++)
     {
+      
+        cout << "----------" << endl;
         cout << "Round: " << i << endl;
+        cout << "----------" << endl;
 
 
         Turn(Dog,board);
@@ -80,29 +111,12 @@ int main()
         Turn(Car, board);
 
 
-        if (i == 20)
-        {
-            cout << Dog.GetName() << " has " << Dog.GetMoney() << endl;
-            cout << Car.GetName() << " has " << Car.GetMoney() << endl;
+        WinCondition(i, Dog, Car);
+        
+        
+        
 
-            if (Dog.GetMoney() > Car.GetMoney())
-            {
-                cout << Dog.GetName() << " has " << endl;
-            
-            }
-            else if(Dog.GetMoney() == Car.GetMoney())
-            {
-                cout <<"It's A draw !" << endl;
-            }
-            else
-            {
-                cout << Car.GetName() << " has " << endl;
-            }
         
-        
-        
-        }
-
     }
 
 

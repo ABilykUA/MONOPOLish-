@@ -19,7 +19,8 @@ void CPlayer::SubtractMoney(int subtract) { mMoney -= subtract; }
 //if player passes go adds money 
 void CPlayer::PassGo() { 
 	mMoney += 200; 
-	cout << GetName() << "passes GO and collects £200 his balance is now : " << GetMoney() << endl;
+	cout << "" << endl;
+	cout << GetName() << " passes GO and collects £200 his balance is now : " << GetMoney() << endl;
 }
 
 
