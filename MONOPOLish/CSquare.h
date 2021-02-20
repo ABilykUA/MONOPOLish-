@@ -1,8 +1,9 @@
+#pragma once
+
 //Andrii Bilyk
 
+#include <string>
 
-#include <string>
-#include <string>
 
 using namespace std;
 
@@ -12,21 +13,21 @@ public:
 
 
 	//constructor
-	CSquare(char id , string name);
+	CSquare(int id , string name);
 
 	//functions 
 
 	
 	//getters and setters 
 
-	char GetID() { return mCode; }
+	int GetID() { return mCode; }
 	string GetName() { return mName; }
 
 
 private:
 
 
-	char mCode;
+	int mCode;
 	string mName;
 
 

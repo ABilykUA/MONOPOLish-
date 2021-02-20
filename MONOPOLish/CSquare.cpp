@@ -7,5 +7,5 @@
 using namespace std;
 
 //constructor
-CSquare::CSquare(char id, string name) : mCode(id), mName(name) { }
+CSquare::CSquare(int id, string name) : mCode(id), mName(name) { }
 

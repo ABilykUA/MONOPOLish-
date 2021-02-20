@@ -21,6 +21,7 @@ void CPlayer::PassGo() {
 	mMoney += 200; 
 	cout << "" << endl;
 	cout << GetName() << " passes GO and collects £200 his balance is now : " << GetMoney() << endl;
+	cout << "" << endl;
 }
 
 
