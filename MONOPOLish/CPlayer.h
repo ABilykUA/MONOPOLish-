@@ -1,4 +1,6 @@
 #pragma once
+//Andrii Bilyk
+
 
 #include <string>
 
@@ -20,8 +22,6 @@ public:
 	void AddMoney(int add);
 
 	void SubtractMoney(int subtract);
-
-	void PassGo();
 
 	void CheckIfGoIsPassed();
 

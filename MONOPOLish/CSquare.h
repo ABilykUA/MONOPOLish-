@@ -1,5 +1,4 @@
 #pragma once
-
 //Andrii Bilyk
 
 #include <string>

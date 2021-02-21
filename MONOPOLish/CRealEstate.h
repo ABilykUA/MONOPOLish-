@@ -1,4 +1,5 @@
 #pragma once
+//Andrii Bilyk
 
 #include "CSquare.h"
 #include "CPlayer.h"
@@ -12,12 +13,14 @@ class CRealEstate :
 public:    
     //constructor
 
+    //subject to change is fro 40+
     CRealEstate(int id, string name);
+
+    //original constructor where cost,rend,cg are set
     CRealEstate(int id, string name, int Cost, int Rent, int ColourGroup);
-
-    void LandOnRE(CPlayer* player1, CPlayer* player2);
     
-
+    //Methods
+    void LandOnRE(CPlayer* player1, CPlayer* player2);
     
    
     //setter and getters 
