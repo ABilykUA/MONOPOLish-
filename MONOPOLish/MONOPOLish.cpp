@@ -2,7 +2,9 @@
 
 #include <iostream>
 #include <string>
-
+#include <fstream>
+#include <sstream>
+#include <vector>
 
 //heders
 #include "CSquare.h"
@@ -55,7 +57,7 @@ void WinCondition(int i, CPlayer* Dog, CPlayer* Car) {
     }
 }
 
-void Turn(CPlayer* player1, CPlayer* player2, CRealEstate* board[]) {
+void Turn(CPlayer* player1, CPlayer* player2, CRealEstate *board[]) {
 
 
   
@@ -67,22 +69,29 @@ void Turn(CPlayer* player1, CPlayer* player2, CRealEstate* board[]) {
 
     cout << "---------------" << endl;
 
+
+
     player1->AddPosition(rand);
 
     player1->CheckIfGoIsPassed();
 
-    board[player1->GetPosition()]->LandOnRE(player1,player2);
-
 
     cout << " " << endl;
+
 
     cout << player1->GetName() << " lands " << board[player1->GetPosition()]->GetName() << endl;
 
+    board[player1->GetPosition()]->LandOnRE(player1, player2);
+
 
     cout << " " << endl;
 
+
+
     cout << player1->GetName() << " has " << player1->GetMoney();
     
+
+
     cout << " " << endl;
     cout << " " << endl;
 
@@ -90,24 +99,115 @@ void Turn(CPlayer* player1, CPlayer* player2, CRealEstate* board[]) {
 }
 
 
+void GetArryData(CRealEstate* board[]) {
+
+    //storing a file's line in a string 
+    string DATA;
+    
+    //vector to split and store the strings value
+    vector<string> VecDATA(6);
+
+    //file name
+    ifstream file;
+    
+    //line count
+    int LineCounter = 0;
+
+    file.open("Monopoly.txt");
+
+    if(file.is_open()){
+    
+
+        while (!file.eof())
+        {
+
+            //saves file's line in a string 
+            getline(file, DATA, '\n');
+
+            //counter for words in string, to split
+            int i = 0;
+           
+            //takes DATA string and splits it into a usebe vector 
+            stringstream ssin(DATA);
+            while (ssin.good() && i < 6) {
+            
+                ssin >> VecDATA[i];
+  
+                ++i;
+             
+            }
+
+      
+            //check the ID of the square to initialize the correct constructwr
+            if (stoi(VecDATA.at(0)) == 1)
+            {
+            
+                  board[LineCounter] = new CRealEstate(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2), stoi(VecDATA.at(3)) , stoi(VecDATA.at(4)), stoi(VecDATA.at(5)));
+                  
+                  LineCounter++;
+            }
+            else
+            {
+               // because some squares have more than one word for the name 
+                switch (stoi(VecDATA.at(0)))
+                {
+              
+                case 3:  case 8:
+                    
+                    board[LineCounter] = new CRealEstate(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2));
+                    
+                    break;
+
+                case 7:
+                   
+                    board[LineCounter] = new CRealEstate(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2) + " " + VecDATA.at(3));
+                   
+                    break;
+
+                default:
+                   
+                    board[LineCounter] = new CRealEstate(stoi(VecDATA.at(0)), VecDATA.at(1));
+                    
+                    break;
+
+                    
+                }
+                
+                LineCounter++;
+              
+            }
+
+        }
+    
+   
+    
+    }
+    else
+    {
+
+        cout << "Error no file found";
+
+    }
+
+
+
+
+    file.close();
+
+
+}
+
 int main()
 {
 
     //board size
     const int boardSize = 26;
+    //board array
+    CRealEstate* board[boardSize];
 
-    
-    //board array creation 
-    CRealEstate* board[boardSize] = { new CRealEstate(2,"GO"), new CRealEstate(1,"Red Road",60,5,0),
-    new CRealEstate(1,"Red Street",80,10,0),new CRealEstate(4,"Bonus"),new CRealEstate(1,"Grey Road",100,15,1),
-    new CRealEstate(1,"Grey Street",120,15,1),new CRealEstate(6,"Jail"),new CRealEstate(1,"Brown Road",140,20,2),
-    new CRealEstate(1,"Brown Street",160,20,2),new CRealEstate(3,"Railway Station"),new CRealEstate(1,"Orange Road",180,25,3),
-    new CRealEstate(1,"Orange  Street",180,25,3),new CRealEstate(1,"Orange Way",200,25,3),new CRealEstate(8,"Free Parking"),
-    new CRealEstate(1,"Yellow Road",220,30,4),new CRealEstate(1,"Yellow Street",240,30,4),new CRealEstate(5,"Penalty"),
-    new CRealEstate(1,"Green Road",260,35,5),new CRealEstate(1,"Green Street",280,35,5),new CRealEstate(7,"Go to Jail"),
-    new CRealEstate(1,"Blue  Road",300,45,6),new CRealEstate(1,"Blue  Street",300,45,6),new CRealEstate(1,"Blue Way",320,45,6),
-    new CRealEstate(3,"Bus Station"),new CRealEstate(1,"Purple Road",400,50,7),new CRealEstate(1,"Purple Street",420,5,7),
-    };
+    //get data from file
+    GetArryData(board);
+
 
     //players 
     CPlayer* Dog = new CPlayer("Dog",1500,0);
@@ -119,16 +219,15 @@ int main()
     //srand(4); pre set
 
 
-
     cout << "----------------------" << endl;
     cout << "Welcome to Monopol-ish" << endl;
     cout << "----------------------" << endl;
 
     //sets the seed 4 Random() function
-    srand(static_cast<unsigned int> (time(0)));
+     srand(static_cast<unsigned int> (time(0)));
 
     //simulates 20 turns
-    for (int i = 0; i <= 20; i++)
+    for (int i = 1; i <= 20; i++)
     {
         
         cout << "==========" << endl;

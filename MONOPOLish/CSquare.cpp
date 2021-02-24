@@ -6,6 +6,25 @@
 
 using namespace std;
 
-//constructor
-CSquare::CSquare(int id, string name) : mCode(id), mName(name) { }
+//constructor											setting up pointers 
+CSquare::CSquare(int id, string name) : mCode(new int), mName(new string) { 
 
+
+	SetID(id);
+
+	SetName(name);
+
+}
+
+//destructor
+
+CSquare::~CSquare()
+{
+	
+	//deallocate memory by deleting operators
+
+	delete mCode;
+	
+	delete mName;
+
+}

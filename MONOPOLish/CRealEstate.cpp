@@ -7,9 +7,39 @@
 using namespace std;
 
 
-CRealEstate::CRealEstate(int id, string name) : CSquare(id, name), mRent(0), IsBought(true), mBoughtBy("Company") {}
+CRealEstate::CRealEstate(int id, string name) : CSquare(id, name), mRent(new int), IsBought(new bool), mBoughtBy(new string) {
+	
+	SetRent(0);
+	SetIsBought(true);
+	SetBoughtBy("Company");
+	
+}
 
-CRealEstate::CRealEstate(int id, string name, int Cost, int Rent, int ColourGroup): CSquare(id, name), mCost(Cost),mRent(Rent),mColourGroup(ColourGroup),IsBought(false),mBoughtBy(""){}
+CRealEstate::CRealEstate(int id, string name, int Cost, int Rent, int ColourGroup): CSquare(id, name), mCost(new int),mRent(new int),mColourGroup(new int),IsBought(new bool),mBoughtBy(new string){
+
+	SetCost(Cost);
+	SetRent(Rent);
+	SetColourGroup(ColourGroup);
+	SetIsBought(false);
+	SetBoughtBy("");
+
+
+}
+
+CRealEstate::~CRealEstate()
+{
+
+	delete  mCost;
+
+	delete  mRent;
+
+	delete  mColourGroup;
+
+	delete  mBoughtBy;
+
+	delete  IsBought;
+	
+}
 
 //comment here
 void CRealEstate::LandOnRE(CPlayer* player1 , CPlayer* player2) {
