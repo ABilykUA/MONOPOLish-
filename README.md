@@ -4,6 +4,10 @@
 
 Start: 50% +
  
+### Status:  
+
+ Works  
+ 
 ### Done: 
 
 - Finish: lvl 2 req :)
@@ -17,19 +21,18 @@ Start: 50% +
 
 - 19/2/21  
 Git rep set up   
-Work started
-Works  
+Work started  
+
 
 - 20/2/21  
 Complited 40% max  
-Complited Pass Mark 
-Works  
+Complited Pass Mark   
+
 
 - 21/2/21    
-Added comments  
-Works  
+Added comments    
+
 
 - 24/2/21    
 Redid every thing into pointers
-Un hard coded board array 
-Works 
+Un hard coded board array   
