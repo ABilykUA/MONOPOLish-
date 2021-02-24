@@ -34,5 +34,5 @@ Added comments
 
 
 - 24/2/21    
-Redid every thing into pointers
+Redid every thing into pointers  
 Un hard coded board array   
