@@ -12,7 +12,14 @@ CRealEstate::CRealEstate(int id, string name) : CSquare(id, name), mRent(new int
 	SetRent(0);
 	SetIsBought(true);
 	SetBoughtBy("Company");
-	
+}
+
+CRealEstate::CRealEstate(int id, string name, int Cost, int Rent) : CSquare(id, name), mCost(new int), mRent(new int), IsBought(new bool), mBoughtBy(new string)
+{
+	SetCost(Cost);
+	SetRent(Rent);
+	SetIsBought(false);
+	SetBoughtBy("");
 }
 
 CRealEstate::CRealEstate(int id, string name, int Cost, int Rent, int ColourGroup): CSquare(id, name), mCost(new int),mRent(new int),mColourGroup(new int),IsBought(new bool),mBoughtBy(new string){
@@ -22,7 +29,6 @@ CRealEstate::CRealEstate(int id, string name, int Cost, int Rent, int ColourGrou
 	SetColourGroup(ColourGroup);
 	SetIsBought(false);
 	SetBoughtBy("");
-
 
 }
 
@@ -44,10 +50,26 @@ CRealEstate::~CRealEstate()
 //comment here
 void CRealEstate::LandOnRE(CPlayer* player1 , CPlayer* player2) {
 
-	//comment here
-	if (GetIsBought() == false)
+	switch (GetIsBought())
 	{
+
+	case true:
+		
 		//comment here
+		if (player1->GetName() != GetBoughtBy()) {
+
+			player1->SubtractMoney(GetRent());
+
+			player2->AddMoney(GetRent());
+
+			cout << player1->GetName() << " pays " << GetRent() << endl;
+
+		}
+		
+		break;
+	
+	case false:
+
 		if (player1->GetMoney() > 0)
 		{
 			player1->SubtractMoney(GetCost());
@@ -59,30 +81,11 @@ void CRealEstate::LandOnRE(CPlayer* player1 , CPlayer* player2) {
 			cout << player1->GetName() << " buys " << GetName() << " for " << GetCost() << endl;
 
 		}
+
+		break;
+
+	
 	}
-
-	//comment here
-	if (GetIsBought() == true)
-	{
-		//comment here
-		if (player1->GetName() != GetBoughtBy()) {
-
-			player1->SubtractMoney(GetRent());
-			
-			player2->AddMoney(GetRent());
-
-			cout << player1->GetName() << " pays " << GetRent() << endl;
-
-		}
-
-	}
-
-
-
-
-
-
-
 
 }
 

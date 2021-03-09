@@ -10,6 +10,10 @@
 #include "CSquare.h"
 #include "CPlayer.h"
 #include "CRealEstate.h"
+#include "CJail.h"
+#include "CGotoJail.h"
+#include "CFreeParking.h"
+#include "CStation.h"
 
 //from Random() 
 #include <random>
@@ -57,7 +61,7 @@ void WinCondition(int i, CPlayer* Dog, CPlayer* Car) {
     }
 }
 
-void Turn(CPlayer* player1, CPlayer* player2, CRealEstate *board[]) {
+void Turn(CPlayer* player1, CPlayer* player2, CSquare*board[]) {
 
 
   
@@ -81,7 +85,12 @@ void Turn(CPlayer* player1, CPlayer* player2, CRealEstate *board[]) {
 
     cout << player1->GetName() << " lands " << board[player1->GetPosition()]->GetName() << endl;
 
+    //Realestare
     board[player1->GetPosition()]->LandOnRE(player1, player2);
+
+
+    //bonus
+    board[player1->GetPosition()]->PlayerLandsOn(player1);
 
 
     cout << " " << endl;
@@ -99,7 +108,7 @@ void Turn(CPlayer* player1, CPlayer* player2, CRealEstate *board[]) {
 }
 
 
-void GetArryData(CRealEstate* board[]) {
+void GetArryData(CSquare* board[]) {
 
     //storing a file's line in a string 
     string DATA;
@@ -148,21 +157,38 @@ void GetArryData(CRealEstate* board[]) {
             }
             else
             {
-               // because some squares have more than one word for the name 
+               // sorts data by comparing ID and creates a new class 
                 switch (stoi(VecDATA.at(0)))
                 {
               
-                case 3:  case 8:
+                case 3:  
                     
-                    board[LineCounter] = new CRealEstate(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2));
+                    board[LineCounter] = new CStation(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2), 200, 10);
                     
                     break;
 
-                case 7:
-                   
-                    board[LineCounter] = new CRealEstate(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2) + " " + VecDATA.at(3));
-                   
+
+                case 6:
+
+                    board[LineCounter] = new CJail(stoi(VecDATA.at(0)), VecDATA.at(1));
+
                     break;
+               
+                
+                case 7:
+
+                    board[LineCounter] = new CGotoJail(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2) + " " + VecDATA.at(3));
+
+                    break;
+
+               
+                case 8:
+
+                    board[LineCounter] = new CFreeParking(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2));
+
+                    break;
+
+
 
                 default:
                    
@@ -178,8 +204,6 @@ void GetArryData(CRealEstate* board[]) {
             }
 
         }
-    
-   
     
     }
     else
@@ -203,7 +227,7 @@ int main()
     //board size
     const int boardSize = 26;
     //board array
-    CRealEstate* board[boardSize];
+    CSquare* board[boardSize];
 
     //get data from file
     GetArryData(board);
@@ -247,10 +271,9 @@ int main()
         //checks for win condition
         WinCondition(i, Dog, Car);
         
-        
-        
+       
+       // delete board [];
 
-        
     }
 
 

@@ -17,15 +17,18 @@ public:
     //subject to change is for 40+ used to inintialize not ER squares 
     CRealEstate(int id, string name);
 
+    //constructor for Station because ColourGroup is not needed 
+    CRealEstate(int id, string name, int Cost, int Rent);
+
     //original constructor where cost,rend,cg are set
     CRealEstate(int id, string name, int Cost, int Rent, int ColourGroup);
 
- //deconstructor
+    //deconstructor
     ~CRealEstate();
 
     
     //Methods
-    void LandOnRE(CPlayer* player1, CPlayer* player2);
+    void LandOnRE(CPlayer* player1, CPlayer* player2) override;
     
    
     //setter and getters 

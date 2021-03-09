@@ -27,6 +27,18 @@
     <ClCompile Include="CRealEstate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CJail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CGotoJail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CFreeParking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CStation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CSquare.h">
@@ -36,6 +48,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CRealEstate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CJail.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CGotoJail.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CFreeParking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CStation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

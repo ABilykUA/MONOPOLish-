@@ -48,7 +48,7 @@ void CPlayer::CheckIfGoIsPassed() {
 
 	if (GetPosition() >= 26)
 	{
-		SubtractPosition(16);
+		SubtractPosition(26);
 		AddMoney(200);
 		cout << "" << endl;
 		cout << GetName() << " passes GO and collects 200 his balance is now : " << GetMoney() << endl;

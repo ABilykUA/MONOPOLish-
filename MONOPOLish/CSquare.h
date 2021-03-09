@@ -2,6 +2,7 @@
 //Andrii Bilyk
 
 #include <string>
+#include "CPlayer.h"
 
 
 using namespace std;
@@ -16,7 +17,9 @@ public:
 	~CSquare();
 
 	//functions 
+	virtual void PlayerLandsOn(CPlayer* player);
 
+	virtual void LandOnRE(CPlayer* player1, CPlayer* player2);
 	
 	//getters and setters 
 	void SetID(int input) { *mCode = input;}

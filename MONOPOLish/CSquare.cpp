@@ -3,6 +3,7 @@
 #include "CSquare.h"
 
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -28,3 +29,12 @@ CSquare::~CSquare()
 	delete mName;
 
 }
+
+void CSquare::PlayerLandsOn(CPlayer* player) {}
+
+
+void CSquare::LandOnRE(CPlayer* player1, CPlayer* player2) {}
+
+
+
+
