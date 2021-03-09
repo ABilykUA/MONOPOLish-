@@ -39,6 +39,12 @@
     <ClCompile Include="CStation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CBonus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CPenalty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CSquare.h">
@@ -60,6 +66,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CStation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CBonus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CPenalty.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

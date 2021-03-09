@@ -28,12 +28,16 @@ CSquare::~CSquare()
 	
 	delete mName;
 
+
+
 }
 
 void CSquare::PlayerLandsOn(CPlayer* player) {}
 
 
 void CSquare::LandOnRE(CPlayer* player1, CPlayer* player2) {}
+
+void CSquare::LandOnBonusORPenalty(CPlayer* player1, int random) {}
 
 
 

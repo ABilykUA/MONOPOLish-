@@ -1,5 +1,9 @@
 //Andrii Bilyk
 
+//memory 
+#define _CRTDBG_MAP_ALLOC
+#include <crtdbg.h>
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -14,6 +18,8 @@
 #include "CGotoJail.h"
 #include "CFreeParking.h"
 #include "CStation.h"
+#include "CBonus.h"
+#include "CPenalty.h"
 
 //from Random() 
 #include <random>
@@ -21,6 +27,7 @@
 
 using namespace std;
 
+const char POUND = 156;
 
 int Random()
 {
@@ -37,8 +44,8 @@ void WinCondition(int i, CPlayer* Dog, CPlayer* Car) {
         cout << " " << endl;
         
 
-        cout << Dog->GetName() << " has " << Dog->GetMoney() << endl;
-        cout << Car->GetName() << " has " << Car->GetMoney() << endl;
+        cout << Dog->GetName() << " has "<< POUND << Dog->GetMoney() << endl;
+        cout << Car->GetName() << " has " << POUND <<Car->GetMoney() << endl;
 
         if (Dog->GetMoney() > Car->GetMoney())
         {
@@ -86,18 +93,20 @@ void Turn(CPlayer* player1, CPlayer* player2, CSquare*board[]) {
     cout << player1->GetName() << " lands " << board[player1->GetPosition()]->GetName() << endl;
 
     //Realestare
-    board[player1->GetPosition()]->LandOnRE(player1, player2);
-
+    //board[player1->GetPosition()]->LandOnRE(player1, player2);
+    
+    //BonusORPenalty
+    board[player1->GetPosition()]->LandOnBonusORPenalty(player1, Random());
 
     //bonus
-    board[player1->GetPosition()]->PlayerLandsOn(player1);
+  //  board[player1->GetPosition()]->PlayerLandsOn(player1);
 
 
     cout << " " << endl;
 
 
 
-    cout << player1->GetName() << " has " << player1->GetMoney();
+    cout << player1->GetName() << " has " << POUND  << player1->GetMoney();
     
 
 
@@ -167,10 +176,16 @@ void GetArryData(CSquare* board[]) {
                     
                     break;
 
+                case 4:
 
-                case 6:
+                    board[LineCounter] = new CBonus(stoi(VecDATA.at(0)), VecDATA.at(1));
 
-                    board[LineCounter] = new CJail(stoi(VecDATA.at(0)), VecDATA.at(1));
+                    break;
+
+
+                case 5:
+
+                    board[LineCounter] = new CPenalty(stoi(VecDATA.at(0)), VecDATA.at(1));
 
                     break;
                
@@ -223,7 +238,9 @@ void GetArryData(CSquare* board[]) {
 
 int main()
 {
+    _crtBreakAlloc = -1;
 
+    
     //board size
     const int boardSize = 26;
     //board array
@@ -270,12 +287,16 @@ int main()
 
         //checks for win condition
         WinCondition(i, Dog, Car);
-        
        
-       // delete board [];
 
     }
 
+  
 
+    delete Dog;
+    delete Car;
+   // delete[] board;
+
+    _CrtDumpMemoryLeaks();
 }
 

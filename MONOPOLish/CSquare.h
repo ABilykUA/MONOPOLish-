@@ -11,7 +11,6 @@ class CSquare
 {
 public:
 
-
 	//constructor											setting up pointers 
 	CSquare(int id , string name);
 	~CSquare();
@@ -20,7 +19,10 @@ public:
 	virtual void PlayerLandsOn(CPlayer* player);
 
 	virtual void LandOnRE(CPlayer* player1, CPlayer* player2);
-	
+
+	virtual void LandOnBonusORPenalty(CPlayer* player1, int random);
+
+
 	//getters and setters 
 	void SetID(int input) { *mCode = input;}
 	void SetName(string input) { *mName = input; }
@@ -29,9 +31,7 @@ public:
 	int GetID() { return *mCode; }
 	string GetName() { return *mName; }
 
-
 private:
-
 
 	int *mCode;
 	string *mName;

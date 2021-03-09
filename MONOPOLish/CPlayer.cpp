@@ -3,6 +3,9 @@
 #include <iostream>
 using namespace std;
 
+
+const char POUND = 156;
+
 //constructor											setting up pointers 
 CPlayer::CPlayer(string name, int money, int position) :mName(new string),mMoney(new int), mPosition(new int) {
 
@@ -51,7 +54,7 @@ void CPlayer::CheckIfGoIsPassed() {
 		SubtractPosition(26);
 		AddMoney(200);
 		cout << "" << endl;
-		cout << GetName() << " passes GO and collects 200 his balance is now : " << GetMoney() << endl;
+		cout << GetName() << " passes GO and collects " << POUND<< "200 his balance is now : " << GetMoney() << endl;
 		cout << "" << endl;
 	}
 
