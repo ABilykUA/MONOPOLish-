@@ -295,7 +295,7 @@ int main()
 
     delete Dog;
     delete Car;
-   // delete[] board;
+    delete[] board;
 
     _CrtDumpMemoryLeaks();
 }

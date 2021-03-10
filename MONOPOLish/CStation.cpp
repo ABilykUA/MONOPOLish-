@@ -8,6 +8,9 @@ CStation::CStation(int id, string name, int Cost, int Rent) : CRealEstate(id, na
 
 CStation::~CStation()
 {
+
+
+
 }
 
 void CStation::LandOnRE(CPlayer* player1, CPlayer* player2)

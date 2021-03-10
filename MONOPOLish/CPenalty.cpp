@@ -8,6 +8,7 @@ CPenalty::CPenalty(int id, string name) : CSquare(id, name) {}
 
 CPenalty::~CPenalty()
 {
+	
 }
 
 void CPenalty::LandOnBonusORPenalty(CPlayer* player1, int random)
