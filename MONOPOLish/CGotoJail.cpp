@@ -4,11 +4,8 @@
 CGotoJail::CGotoJail(int id, string name) : CSquare(id, name){
 }
 
-CGotoJail::~CGotoJail()
-{
-}
 
-void CGotoJail::PlayerLandsOn(CPlayer* player)
+void CGotoJail::LandOn(CPlayer* player)
 {
 	
 	if (player->GetPosition() == 19)

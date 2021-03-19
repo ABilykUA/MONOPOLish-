@@ -6,11 +6,8 @@ class CJail :
 
 public:
 
-    CJail(int id, string name); 
-    ~CJail();
-
-    
-    void PlayerLandsOn(CPlayer* player) override;
+    CJail(int id, string name);  
+    void LandOn(CPlayer* player) override;
 
 private:
 

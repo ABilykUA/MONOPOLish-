@@ -6,9 +6,9 @@ class CStation :
 public:
 
     CStation(int id, string name, int Cost, int Rent);
-    ~CStation();
+    
 
-    void LandOnRE(CPlayer* player1, CPlayer* player2) override;
+    void LandOn(CPlayer* player1, CPlayer* player2) override;
 
 private:
 

@@ -7,48 +7,15 @@
 using namespace std;
 
 
-CRealEstate::CRealEstate(int id, string name) : CSquare(id, name), mRent(new int), IsBought(new bool), mBoughtBy(new string) {
-	
-	SetRent(0);
-	SetIsBought(true);
-	SetBoughtBy("Company");
-}
 
-CRealEstate::CRealEstate(int id, string name, int Cost, int Rent) : CSquare(id, name), mCost(new int), mRent(new int), IsBought(new bool), mBoughtBy(new string)
-{
-	SetCost(Cost);
-	SetRent(Rent);
-	SetIsBought(false);
-	SetBoughtBy("");
-}
 
-CRealEstate::CRealEstate(int id, string name, int Cost, int Rent, int ColourGroup): CSquare(id, name), mCost(new int),mRent(new int),mColourGroup(new int),IsBought(new bool),mBoughtBy(new string){
+CRealEstate::CRealEstate(int id, string name, int Cost, int Rent) : CSquare(id, name), mCost(Cost), mRent(Rent), mColourGroup(15), IsBought(false), mBoughtBy("") {}
 
-	SetCost(Cost);
-	SetRent(Rent);
-	SetColourGroup(ColourGroup);
-	SetIsBought(false);
-	SetBoughtBy("");
+CRealEstate::CRealEstate(int id, string name, int Cost, int Rent, int ColourGroup): CSquare(id, name), mCost(Cost),mRent(Rent),mColourGroup(ColourGroup),IsBought(false),mBoughtBy(""){}
 
-}
-
-CRealEstate::~CRealEstate()
-{
-
-	delete  mCost;
-
-	delete  mRent;
-
-	delete  mColourGroup;
-
-	delete  mBoughtBy;
-
-	delete  IsBought;
-	
-}
 
 //comment here
-void CRealEstate::LandOnRE(CPlayer* player1 , CPlayer* player2) {
+void CRealEstate::LandOn(CPlayer* player1 , CPlayer* player2) {
 
 	switch (GetIsBought())
 	{

@@ -6,10 +6,10 @@ class CFreeParking :
 
 public:
     CFreeParking(int id, string name);
-    ~CFreeParking();
 
 
-    void PlayerLandsOn(CPlayer* player) override;
+
+    void LandOn(CPlayer* player) override;
 
 private:
 

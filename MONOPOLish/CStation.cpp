@@ -1,19 +1,10 @@
 #include "CStation.h"
 #include <iostream>
 
-CStation::CStation(int id, string name, int Cost, int Rent) : CRealEstate(id, name, Cost, Rent)
-{
-
-}
-
-CStation::~CStation()
-{
+CStation::CStation(int id, string name, int Cost, int Rent) : CRealEstate(id, name, Cost, Rent) {}
 
 
-
-}
-
-void CStation::LandOnRE(CPlayer* player1, CPlayer* player2)
+void CStation::LandOn(CPlayer* player1, CPlayer* player2)
 {
 
 	switch (GetIsBought())

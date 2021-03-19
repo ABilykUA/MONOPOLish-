@@ -5,11 +5,7 @@ CJail::CJail(int id, string name) : CSquare(id, name)
 {
 }
 
-CJail::~CJail()
-{
-}
-
-void CJail::PlayerLandsOn(CPlayer* player){
+void CJail::LandOn(CPlayer* player){
 
 	if (player->GetPosition() == 6)
 	{

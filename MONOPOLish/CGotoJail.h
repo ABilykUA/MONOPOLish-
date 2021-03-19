@@ -7,9 +7,9 @@ class CGotoJail :
 public:
 
     CGotoJail(int id, string name);
-    ~CGotoJail();
+ 
 
-    void PlayerLandsOn(CPlayer* player) override;
+    void LandOn(CPlayer* player) override;
 
 
 private:

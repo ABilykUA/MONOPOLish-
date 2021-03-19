@@ -6,8 +6,8 @@ class CBonus :
 public:
     
     CBonus(int id, string name);
-    ~CBonus();
-    virtual void LandOnBonusORPenalty(CPlayer* player1, int random) override;
+  
+     void LandOn(CPlayer* player1, int random) override;
 
 private:
 

@@ -1,17 +1,10 @@
 #include "CFreeParking.h"
 #include <iostream>
 
-CFreeParking::CFreeParking(int id, string name) : CSquare(id, name)
-{
+CFreeParking::CFreeParking(int id, string name) : CSquare(id, name){}
 
-}
 
-CFreeParking::~CFreeParking()
-{
-
-}
-
-void CFreeParking::PlayerLandsOn(CPlayer * player)
+void CFreeParking::LandOn(CPlayer * player)
 {
 
 	if (player->GetPosition() == 13)

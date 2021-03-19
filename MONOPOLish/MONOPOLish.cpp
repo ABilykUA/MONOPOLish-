@@ -68,7 +68,7 @@ void WinCondition(int i, CPlayer* Dog, CPlayer* Car) {
     }
 }
 
-void Turn(CPlayer* player1, CPlayer* player2, CSquare*board[]) {
+void Turn(CPlayer* player1, CPlayer* player2, vector<CSquare*>& board) {
 
 
   
@@ -90,16 +90,16 @@ void Turn(CPlayer* player1, CPlayer* player2, CSquare*board[]) {
     cout << " " << endl;
 
 
-    cout << player1->GetName() << " lands " << board[player1->GetPosition()]->GetName() << endl;
+    cout << player1->GetName() << " lands " << board.at(player1->GetPosition())->GetName() << endl;
 
     //Realestare
-    //board[player1->GetPosition()]->LandOnRE(player1, player2);
+    board.at(player1->GetPosition())->LandOn(player1, player2);
     
     //BonusORPenalty
-    board[player1->GetPosition()]->LandOnBonusORPenalty(player1, Random());
+    board.at(player1->GetPosition())->LandOn(player1, Random());
 
-    //bonus
-  //  board[player1->GetPosition()]->PlayerLandsOn(player1);
+    //station
+    board.at(player1->GetPosition())->LandOn(player1);
 
 
     cout << " " << endl;
@@ -117,7 +117,7 @@ void Turn(CPlayer* player1, CPlayer* player2, CSquare*board[]) {
 }
 
 
-void GetArryData(CSquare* board[]) {
+void GetArryData(vector<CSquare*>& Test) {
 
     //storing a file's line in a string 
     string DATA;
@@ -127,9 +127,6 @@ void GetArryData(CSquare* board[]) {
 
     //file name
     ifstream file;
-    
-    //line count
-    int LineCounter = 0;
 
     file.open("Monopoly.txt");
 
@@ -156,67 +153,79 @@ void GetArryData(CSquare* board[]) {
             }
 
       
-            //check the ID of the square to initialize the correct constructwr
-            if (stoi(VecDATA.at(0)) == 1)
-            {
             
-                  board[LineCounter] = new CRealEstate(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2), stoi(VecDATA.at(3)) , stoi(VecDATA.at(4)), stoi(VecDATA.at(5)));
-                  
-                  LineCounter++;
-            }
-            else
-            {
                // sorts data by comparing ID and creates a new class 
                 switch (stoi(VecDATA.at(0)))
                 {
+
+
+                case 1:
+
+
+                    Test.push_back(new CRealEstate(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2), stoi(VecDATA.at(3)), stoi(VecDATA.at(4)), stoi(VecDATA.at(5))));
+
+                    break;
               
+
+
+                case 2:
+
+
+                    Test.push_back(new CSquare(stoi(VecDATA.at(0)), VecDATA.at(1)));
+
+                    break;
+
                 case 3:  
                     
-                    board[LineCounter] = new CStation(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2), 200, 10);
-                    
+                  
+                    Test.push_back(new CStation(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2), 200, 10));
                     break;
 
                 case 4:
 
-                    board[LineCounter] = new CBonus(stoi(VecDATA.at(0)), VecDATA.at(1));
-
+                   
+                    Test.push_back(new CBonus(stoi(VecDATA.at(0)), VecDATA.at(1)));
                     break;
 
 
                 case 5:
 
-                    board[LineCounter] = new CPenalty(stoi(VecDATA.at(0)), VecDATA.at(1));
-
+                    
+                    Test.push_back(new CPenalty(stoi(VecDATA.at(0)), VecDATA.at(1)));
                     break;
                
                 
+
+                case 6:
+
+
+                    Test.push_back(new CJail(stoi(VecDATA.at(0)), VecDATA.at(1)));
+                    break;
+
+
+
                 case 7:
 
-                    board[LineCounter] = new CGotoJail(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2) + " " + VecDATA.at(3));
-
+                  
+                    Test.push_back(new CGotoJail(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2) + " " + VecDATA.at(3)));
                     break;
 
                
                 case 8:
 
-                    board[LineCounter] = new CFreeParking(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2));
-
-                    break;
-
-
-
-                default:
                    
-                    board[LineCounter] = new CRealEstate(stoi(VecDATA.at(0)), VecDATA.at(1));
-                    
+                    Test.push_back(new CFreeParking(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2)));
                     break;
 
+
+
+               
                     
                 }
                 
-                LineCounter++;
+         
               
-            }
+            
 
         }
     
@@ -227,7 +236,6 @@ void GetArryData(CSquare* board[]) {
         cout << "Error no file found";
 
     }
-
 
 
 
@@ -243,16 +251,19 @@ int main()
     
     //board size
     const int boardSize = 26;
+    
     //board array
-    CSquare* board[boardSize];
-
-    //get data from file
-    GetArryData(board);
-
+    vector<CSquare*> board;
+    
 
     //players 
     CPlayer* Dog = new CPlayer("Dog",1500,0);
     CPlayer* Car = new CPlayer("Car", 1500,0);
+
+
+    //get data from file
+    GetArryData(board);
+
 
 
     //srand(static_cast<unsigned int> (time(0))); random
@@ -264,8 +275,10 @@ int main()
     cout << "Welcome to Monopol-ish" << endl;
     cout << "----------------------" << endl;
 
-    //sets the seed 4 Random() function
+    //sets the seed 5 Random() function
      srand(static_cast<unsigned int> (time(0)));
+
+
 
     //simulates 20 turns
     for (int i = 1; i <= 20; i++)
@@ -295,7 +308,12 @@ int main()
 
     delete Dog;
     delete Car;
-    delete[] board;
+    for (int i = 0; i < board.size(); i++)
+    {
+    
+        delete board[i];
+    
+    }
 
     _CrtDumpMemoryLeaks();
 }

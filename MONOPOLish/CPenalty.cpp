@@ -6,12 +6,8 @@ const char POUND = 156;
 
 CPenalty::CPenalty(int id, string name) : CSquare(id, name) {}
 
-CPenalty::~CPenalty()
-{
-	
-}
 
-void CPenalty::LandOnBonusORPenalty(CPlayer* player1, int random)
+void CPenalty::LandOn(CPlayer* player1, int random)
 {
 
 	if (player1->GetPosition() == 16)

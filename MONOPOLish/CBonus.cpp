@@ -5,11 +5,8 @@ const char POUND = 156;
 
 CBonus::CBonus(int id, string name) : CSquare(id, name) {}
 
-CBonus::~CBonus()
-{
-}
 
-void CBonus::LandOnBonusORPenalty(CPlayer* player1, int random)
+void CBonus::LandOn(CPlayer* player1, int random)
 {
 	if (player1->GetPosition() == 3)
 	{
