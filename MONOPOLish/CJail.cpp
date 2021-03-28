@@ -5,15 +5,15 @@ CJail::CJail(int id, string name) : CSquare(id, name)
 {
 }
 
-void CJail::LandOn(CPlayer* player){
+void CJail::LandOn(CPlayer* player1){
 
-	if (player->GetPosition() == 6)
+	if (player1->GetPosition() == 6)
 	{
-		cout << player->GetName() + " lands on Jail" << endl;
+		cout << player1->GetName() + " lands on Jail" << endl;
 
 		cout <<" "<< endl;
 
-		cout << player->GetName() + " is just visiting" << endl;
+		cout << player1->GetName() + " is just visiting" << endl;
 
 	}
 

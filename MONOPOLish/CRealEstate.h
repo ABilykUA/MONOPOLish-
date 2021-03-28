@@ -20,9 +20,9 @@ public:
 
     CRealEstate(int id, string name, int Cost, int Rent, int ColourGroup);
 
-    
-    //Methods
     void LandOn(CPlayer* player1, CPlayer* player2) override;
+
+    //Methods
     
    
     //setter and getters 

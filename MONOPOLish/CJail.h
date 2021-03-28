@@ -7,7 +7,7 @@ class CJail :
 public:
 
     CJail(int id, string name);  
-    void LandOn(CPlayer* player) override;
+    void LandOn(CPlayer* player1) override;
 
 private:
 

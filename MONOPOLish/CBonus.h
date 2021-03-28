@@ -1,5 +1,8 @@
 #pragma once
 #include "CSquare.h"
+#include "CPlayer.h"
+
+
 class CBonus :
     public CSquare
 {
@@ -12,4 +15,5 @@ public:
 private:
 
 };
+
 

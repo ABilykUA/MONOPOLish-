@@ -4,7 +4,7 @@
 CFreeParking::CFreeParking(int id, string name) : CSquare(id, name){}
 
 
-void CFreeParking::LandOn(CPlayer * player)
+void CFreeParking::LandOn(CPlayer*  player)
 {
 
 	if (player->GetPosition() == 13)

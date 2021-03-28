@@ -1,5 +1,6 @@
 #pragma once
 #include "CSquare.h"
+
 class CPenalty :
     public CSquare
 {

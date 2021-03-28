@@ -3,6 +3,7 @@
 //memory 
 #define _CRTDBG_MAP_ALLOC
 #include <crtdbg.h>
+#include <memory.h>
 
 #include <iostream>
 #include <string>
@@ -27,7 +28,6 @@
 
 using namespace std;
 
-const char POUND = 156;
 
 int Random()
 {
@@ -35,7 +35,7 @@ int Random()
 }
 
 
-void WinCondition(int i, CPlayer* Dog, CPlayer* Car) {
+void WinCondition(int i, shared_ptr<CPlayer>Dog  , shared_ptr<CPlayer> Car) {
 
     if (i == 20)
     {
@@ -43,10 +43,8 @@ void WinCondition(int i, CPlayer* Dog, CPlayer* Car) {
         cout << " " << endl;
         cout << " " << endl;
         
-
-        cout << Dog->GetName() << " has "<< POUND << Dog->GetMoney() << endl;
-        cout << Car->GetName() << " has " << POUND <<Car->GetMoney() << endl;
-
+        cout << "===================" << endl;
+        
         if (Dog->GetMoney() > Car->GetMoney())
         {
             cout << Dog->GetName() << " won !" << endl;
@@ -60,23 +58,24 @@ void WinCondition(int i, CPlayer* Dog, CPlayer* Car) {
         {
             cout << Car->GetName() << " won !" << endl;
         }
+        cout << Dog->GetName() << " has " << Dog->GetMoney() << endl;
+        cout << Car->GetName() << " has " << Car->GetMoney() << endl;
 
-
+        cout << "=================== " << endl;
 
 
 
     }
 }
 
-void Turn(CPlayer* player1, CPlayer* player2, vector<CSquare*>& board) {
-
+void Turn(shared_ptr<CPlayer> player1, shared_ptr<CPlayer> player2, vector<shared_ptr<CSquare>>& board) {
 
   
     int rand = Random();
     
     cout << "---------------" << endl;
 
-    cout << player1->GetName() << " rolls " << rand << endl;
+    cout << player1->GetName() << " rolls: " << rand << endl;
 
     cout << "---------------" << endl;
 
@@ -92,21 +91,15 @@ void Turn(CPlayer* player1, CPlayer* player2, vector<CSquare*>& board) {
 
     cout << player1->GetName() << " lands " << board.at(player1->GetPosition())->GetName() << endl;
 
-    //Realestare
-    board.at(player1->GetPosition())->LandOn(player1, player2);
-    
-    //BonusORPenalty
-    board.at(player1->GetPosition())->LandOn(player1, Random());
-
-    //station
-    board.at(player1->GetPosition())->LandOn(player1);
+  
+    board.at(player1->GetPosition())->LandOnSquare(player1.get(), player2.get(), Random());
 
 
     cout << " " << endl;
 
 
 
-    cout << player1->GetName() << " has " << POUND  << player1->GetMoney();
+    cout << player1->GetName() << " has "<< player1->GetMoney();
     
 
 
@@ -116,8 +109,7 @@ void Turn(CPlayer* player1, CPlayer* player2, vector<CSquare*>& board) {
 
 }
 
-
-void GetArryData(vector<CSquare*>& Test) {
+void GetArryData(vector<shared_ptr<CSquare>>& board) {
 
     //storing a file's line in a string 
     string DATA;
@@ -151,47 +143,43 @@ void GetArryData(vector<CSquare*>& Test) {
                 ++i;
              
             }
-
-      
-            
                // sorts data by comparing ID and creates a new class 
                 switch (stoi(VecDATA.at(0)))
                 {
 
 
                 case 1:
-
-
-                    Test.push_back(new CRealEstate(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2), stoi(VecDATA.at(3)), stoi(VecDATA.at(4)), stoi(VecDATA.at(5))));
+                   
+                    board.push_back(make_shared<CRealEstate>(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2), stoi(VecDATA.at(3)), stoi(VecDATA.at(4)), stoi(VecDATA.at(5))));
 
                     break;
-              
+         
 
 
                 case 2:
 
 
-                    Test.push_back(new CSquare(stoi(VecDATA.at(0)), VecDATA.at(1)));
+                    board.push_back(make_shared<CSquare>(stoi(VecDATA.at(0)), VecDATA.at(1)));
 
                     break;
 
                 case 3:  
                     
                   
-                    Test.push_back(new CStation(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2), 200, 10));
+                    board.push_back(make_shared<CStation>(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2), 200, 10));
                     break;
 
                 case 4:
 
                    
-                    Test.push_back(new CBonus(stoi(VecDATA.at(0)), VecDATA.at(1)));
+                    board.push_back(make_shared<CBonus>(stoi(VecDATA.at(0)), VecDATA.at(1)));
                     break;
 
 
                 case 5:
 
                     
-                    Test.push_back(new CPenalty(stoi(VecDATA.at(0)), VecDATA.at(1)));
+                    board.push_back(make_shared<CPenalty>(stoi(VecDATA.at(0)), VecDATA.at(1)));
                     break;
                
                 
@@ -199,7 +187,7 @@ void GetArryData(vector<CSquare*>& Test) {
                 case 6:
 
 
-                    Test.push_back(new CJail(stoi(VecDATA.at(0)), VecDATA.at(1)));
+                    board.push_back(make_shared<CJail>(stoi(VecDATA.at(0)), VecDATA.at(1)));
                     break;
 
 
@@ -207,14 +195,14 @@ void GetArryData(vector<CSquare*>& Test) {
                 case 7:
 
                   
-                    Test.push_back(new CGotoJail(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2) + " " + VecDATA.at(3)));
+                    board.push_back(make_shared<CGotoJail>(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2) + " " + VecDATA.at(3)));
                     break;
 
                
                 case 8:
 
                    
-                    Test.push_back(new CFreeParking(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2)));
+                    board.push_back(make_shared<CFreeParking>(stoi(VecDATA.at(0)), VecDATA.at(1) + " " + VecDATA.at(2)));
                     break;
 
 
@@ -244,43 +232,31 @@ void GetArryData(vector<CSquare*>& Test) {
 
 }
 
-int main()
-{
+void WraperForMemoryDeallocation() {
+
+
     _crtBreakAlloc = -1;
 
-    
-    //board size
-    const int boardSize = 26;
-    
     //board array
-    vector<CSquare*> board;
-    
+    vector<shared_ptr<CSquare>> board;
+
+    shared_ptr<CPlayer>Dog = make_shared<CPlayer>("Dog", 1500, 0);
+    shared_ptr<CPlayer>Car = make_shared<CPlayer>("Car", 1500, 0);
 
     //players 
-    CPlayer* Dog = new CPlayer("Dog",1500,0);
-    CPlayer* Car = new CPlayer("Car", 1500,0);
-
-
-    //get data from file
+    
+     //get data from file
     GetArryData(board);
-
-
-
-    //srand(static_cast<unsigned int> (time(0))); random
-    //or
-    //srand(4); pre set
 
 
     cout << "----------------------" << endl;
     cout << "Welcome to Monopol-ish" << endl;
     cout << "----------------------" << endl;
 
-    //sets the seed 5 Random() function
-     srand(static_cast<unsigned int> (time(0)));
-
-
-
+    
     //simulates 20 turns
+     
+    srand(5);
     for (int i = 1; i <= 20; i++)
     {
         
@@ -292,28 +268,25 @@ int main()
      
 
         //Dogs turn
-        Turn(Dog, Car, board);
+        Turn(Dog,Car, board);
 
         //Cars turn
-        Turn(Car, Dog, board);
+        Turn(Car,Dog, board);
 
 
         //checks for win condition
-        WinCondition(i, Dog, Car);
+        WinCondition(i,Dog,Car);
        
 
     }
 
   
+}
 
-    delete Dog;
-    delete Car;
-    for (int i = 0; i < board.size(); i++)
-    {
-    
-        delete board[i];
-    
-    }
+int main()
+{
+ 
+    WraperForMemoryDeallocation();
 
     _CrtDumpMemoryLeaks();
 }

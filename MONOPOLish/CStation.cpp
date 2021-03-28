@@ -12,7 +12,7 @@ void CStation::LandOn(CPlayer* player1, CPlayer* player2)
 
 	case true:
 
-		//comment here
+		
 		if (player1->GetName() != GetBoughtBy()) {
 
 			player1->SubtractMoney(GetRent());

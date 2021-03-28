@@ -9,7 +9,7 @@ public:
 
 
 
-    void LandOn(CPlayer* player) override;
+    void LandOn(CPlayer* player1) override;
 
 private:
 

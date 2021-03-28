@@ -5,24 +5,24 @@ CGotoJail::CGotoJail(int id, string name) : CSquare(id, name){
 }
 
 
-void CGotoJail::LandOn(CPlayer* player)
+void CGotoJail::LandOn(CPlayer* player1)
 {
 	
-	if (player->GetPosition() == 19)
+	if (player1->GetPosition() == 19)
 	{
-		cout << player->GetName() + " lands on Go to Jail" << endl;
+		cout << player1->GetName() + " lands on Go to Jail" << endl;
 
 		cout << " " << endl;
 
-		cout << player->GetName() + " goes to Jail" << endl;
+		cout << player1->GetName() + " goes to Jail" << endl;
 
-		player->SetPosition(6);
+		player1->SetPosition(6);
 
 		cout << " " << endl;
 
-		cout << player->GetName() + " pays 50" << endl;
+		cout << player1->GetName() + " pays 50" << endl;
 
-		player->SubtractMoney(50);
+		player1->SubtractMoney(50);
 	}
 
 }

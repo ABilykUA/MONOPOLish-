@@ -1,6 +1,5 @@
 #include "CRealEstate.h"
 #include "CPlayer.h"
-
 #include <iostream>
 #include <string>
 
@@ -14,22 +13,45 @@ CRealEstate::CRealEstate(int id, string name, int Cost, int Rent) : CSquare(id, 
 CRealEstate::CRealEstate(int id, string name, int Cost, int Rent, int ColourGroup): CSquare(id, name), mCost(Cost),mRent(Rent),mColourGroup(ColourGroup),IsBought(false),mBoughtBy(""){}
 
 
-//comment here
-void CRealEstate::LandOn(CPlayer* player1 , CPlayer* player2) {
+void CRealEstate::LandOn(CPlayer* player1, CPlayer* player2)  {
 
 	switch (GetIsBought())
 	{
 
 	case true:
-		
+
 		//comment here
 		if (player1->GetName() != GetBoughtBy()) {
+
+
 
 			player1->SubtractMoney(GetRent());
 
 			player2->AddMoney(GetRent());
 
 			cout << player1->GetName() << " pays " << GetRent() << endl;
+
+
+			//if (CheckIfFullHouse(board, player1) != true)
+			//{
+			//	player1->SubtractMoney(GetRent());
+
+			//	player2->AddMoney(GetRent());
+
+			//	cout << player1->GetName() << " pays " << GetRent() << endl;
+
+			//}
+			//else {
+			//
+			//	player1->SubtractMoney(GetRent() * 2 );
+
+			//	player2->AddMoney(GetRent() * 2);
+
+			//	cout << player1->GetName() << " pays " << GetRent() * 2 << endl;
+
+			//
+			//}
+
 
 		}
 		
@@ -53,6 +75,8 @@ void CRealEstate::LandOn(CPlayer* player1 , CPlayer* player2) {
 
 	
 	}
+
+	
 
 }
 

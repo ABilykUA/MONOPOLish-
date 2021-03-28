@@ -1,7 +1,6 @@
 #include "CBonus.h"
 #include <iostream>
 
-const char POUND = 156;
 
 CBonus::CBonus(int id, string name) : CSquare(id, name) {}
 
@@ -16,7 +15,7 @@ void CBonus::LandOn(CPlayer* player1, int random)
 
 		case 1:
 
-			cout << "Find some money. Gain " <<POUND << 20  << endl;
+			cout << "Find some money. Gain "  << 20  << endl;
 
 			player1->AddMoney(20);
 
@@ -24,7 +23,7 @@ void CBonus::LandOn(CPlayer* player1, int random)
 
 		case 2:
 
-			cout << "Win a coding cpmpetition. Gain " << POUND << 50 << endl;
+			cout << "Win a coding cpmpetition. Gain "  << 50 << endl;
 
 			player1->AddMoney(50);
 
@@ -33,7 +32,7 @@ void CBonus::LandOn(CPlayer* player1, int random)
 
 		case 3:
 
-			cout << "Receive a rent rebate. Gain " << POUND << 100 << endl;
+			cout << "Receive a rent rebate. Gain "  << 100 << endl;
 
 			player1->AddMoney(100);
 
@@ -41,7 +40,7 @@ void CBonus::LandOn(CPlayer* player1, int random)
 
 		case 4:
 
-			cout << "Win the lottery. Gain " << POUND << 150 << endl;
+			cout << "Win the lottery. Gain "  << 150 << endl;
 
 			player1->AddMoney(150);
 
@@ -50,7 +49,7 @@ void CBonus::LandOn(CPlayer* player1, int random)
 
 		case 5:
 
-			cout << "Receive a bequest. Gain " << POUND << 200 << endl;
+			cout << "Receive a bequest. Gain " << 200 << endl;
 
 			player1->AddMoney(200);
 
@@ -59,7 +58,7 @@ void CBonus::LandOn(CPlayer* player1, int random)
 
 		case 6:
 
-			cout << "It's your birthbay. Gain " << POUND << 300 << endl;
+			cout << "It's your birthbay. Gain "  << 300 << endl;
 
 			player1->AddMoney(300);
 
@@ -68,10 +67,8 @@ void CBonus::LandOn(CPlayer* player1, int random)
 		}
 
 
-		cout << " " << endl;
-
-		cout << player1->GetName() << " has " << player1->GetMoney() << endl;
-
 	}
+
+
 
 }
