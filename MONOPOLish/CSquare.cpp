@@ -1,30 +1,34 @@
 //Andrii Bilyk
-
+#include "CPlayer.h"
+#include <memory.h>
 #include "CSquare.h"
-
 #include <string>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
-//constructor											setting up pointers 
-CSquare::CSquare(int id, string name) : mCode(new int), mName(new string) { 
+//constructor											
+CSquare::CSquare(int id, string name) : mCode(id), mName(name) {}
 
-
-	SetID(id);
-
-	SetName(name);
-
-}
-
-//destructor
-
-CSquare::~CSquare()
+void CSquare::LandOnSquare(CPlayer*  player1, CPlayer*  player2, int random)
 {
-	
-	//deallocate memory by deleting operators
+	LandOn(player1);
 
-	delete mCode;
-	
-	delete mName;
+	LandOn(player1,random);
 
+	LandOn(player1, player2);
 }
+
+void CSquare::LandOn(CPlayer* player1)
+{
+}
+
+void CSquare::LandOn(CPlayer*  player1, int random)
+{
+}
+
+void CSquare::LandOn(CPlayer* player1, CPlayer* player2)
+{
+}
+

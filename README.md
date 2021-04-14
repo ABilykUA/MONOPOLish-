@@ -2,7 +2,7 @@
 
 ## TODO: 
 
-Start: 50% +
+Start: 60% +
  
 
  ---------------------------------------  
@@ -18,7 +18,8 @@ Start: 50% +
 - Finish: seting up the CSquare class and array.
 - Finish: CPlayer class, Countiune with Program Specification.
 - Fix: position it gose more than 26 and chrashes the app
-- Finish: redoing to pointers, go back and implament a file reading fumction
+- Finish: redoing to pointers, go back and implament a file reading fumction  
+- Start: 50% +
 
 
 ### Notes: 
@@ -40,3 +41,6 @@ Added comments
 - 24/2/21    
 Redid every thing into pointers  
 Un hard coded board array   
+
+- 09/3/21      
+Did 50%

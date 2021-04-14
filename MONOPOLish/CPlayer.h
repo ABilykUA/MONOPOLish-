@@ -13,7 +13,6 @@ public:
 
 	//constructor
 	CPlayer(string name, int money , int position);
-	~CPlayer();
 
 	//functions 
 
@@ -30,29 +29,29 @@ public:
 
 	//getters & setters 
 
-	void SetName(string input) { *mName = input;}
+	void SetName(string input) { mName = input;}
 
-	void SetMoney(int input) {  *mMoney = input;}
+	void SetMoney(int input) {  mMoney = input;}
 
-	void SetPosition(int input) {  *mPosition = input;}
+	void SetPosition(int input) {  mPosition = input;}
 
 
 
-	string GetName() { return *mName; }
+	string GetName() { return mName; }
 
-	int GetMoney() { return *mMoney; }
+	int GetMoney() { return mMoney; }
 
-	int GetPosition() { return *mPosition; }
+	int GetPosition() { return mPosition; }
 	
 	
 
 private:
 
-	string *mName;
+	string mName;
 
-	int *mMoney;
+	int mMoney;
 
-	int *mPosition;
+	int mPosition;
 
 
 
